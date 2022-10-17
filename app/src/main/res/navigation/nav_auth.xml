@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_feed"
+    app:startDestination="@id/appJourneyFragment">
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.simulacratech.scora.ui.login.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_signupFragment"
+            app:destination="@id/signupFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_forgotPasswordFragment"
+            app:destination="@id/forgotPasswordFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/appJourneyFragment"
+        android:name="com.simulacratech.scora.ui.appJourney.AppJourneyFragment"
+        android:label="fragment_app_journey"
+        tools:layout="@layout/fragment_app_journey" >
+        <action
+            android:id="@+id/action_appJourneyFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signupFragment"
+        android:name="com.simulacratech.scora.ui.signup.SignupFragment"
+        android:label="SignupFragment" />
+    <fragment
+        android:id="@+id/forgotPasswordFragment"
+        android:name="com.simulacratech.scora.ui.forgotPassword.ForgotPasswordFragment"
+        android:label="fragment_forgot_password"
+        tools:layout="@layout/fragment_forgot_password" />
+</navigation>
