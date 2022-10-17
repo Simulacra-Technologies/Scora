@@ -1,7 +1,7 @@
 package com.simulacratech.scora.ui.forgotPassword
 
-import androidx.lifecycle.ViewModel
+import com.simulacratech.scora.base.BaseViewModel
 
-class ForgotPasswordViewModel : ViewModel() {
+class ForgotPasswordViewModel : BaseViewModel() {
     // TODO: Implement the ViewModel
 }

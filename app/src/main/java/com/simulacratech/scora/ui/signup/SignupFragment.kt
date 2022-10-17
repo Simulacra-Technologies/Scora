@@ -6,6 +6,7 @@ import com.simulacratech.scora.MainActivityViewModel
 import com.simulacratech.scora.R
 import com.simulacratech.scora.base.BaseFragment
 import com.simulacratech.scora.databinding.FragmentSignupBinding
+import com.simulacratech.scora.ui.forgotPassword.ForgotPasswordFragmentDirections
 
 class SignupFragment  : BaseFragment<FragmentSignupBinding, SignupViewModel>() {
 
@@ -13,17 +14,7 @@ class SignupFragment  : BaseFragment<FragmentSignupBinding, SignupViewModel>() {
         fun newInstance() = SignupFragment()
     }
 
-/*
-    @Inject
-    lateinit var viewModelFactory: LoginViewModelFactory
-*/
-
-    override val viewModel: SignupViewModel by viewModels()/*{
-        SignupViewModel.provideFactory(
-            viewModelFactory,
-            args.isGuest
-        )
-    }*/
+    override val viewModel: SignupViewModel by viewModels()
 
     val mainActivityViewModel: MainActivityViewModel by activityViewModels()
 
@@ -32,7 +23,9 @@ class SignupFragment  : BaseFragment<FragmentSignupBinding, SignupViewModel>() {
     override fun getMaiViewModel() = mainActivityViewModel
 
     override fun init() {
-
+        binding.btnBackToLogin.setOnClickListener {
+            viewModel.navigate(SignupFragmentDirections.actionSignupFragmentToLoginFragment())
+        }
     }
 
 

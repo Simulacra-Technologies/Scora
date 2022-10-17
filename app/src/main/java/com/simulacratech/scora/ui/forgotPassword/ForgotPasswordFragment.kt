@@ -1,32 +1,31 @@
 package com.simulacratech.scora.ui.forgotPassword
 
-import androidx.lifecycle.ViewModelProvider
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
+import com.simulacratech.scora.MainActivityViewModel
 import com.simulacratech.scora.R
+import com.simulacratech.scora.base.BaseFragment
+import com.simulacratech.scora.base.BaseViewModel
+import com.simulacratech.scora.databinding.FragmentForgotPasswordBinding
+import com.simulacratech.scora.ui.appJourney.AppJourneyFragmentDirections
 
-class ForgotPasswordFragment : Fragment() {
+class ForgotPasswordFragment : BaseFragment<FragmentForgotPasswordBinding, ForgotPasswordViewModel>() {
 
     companion object {
         fun newInstance() = ForgotPasswordFragment()
     }
 
-    private lateinit var viewModel: ForgotPasswordViewModel
+    override val viewModel: ForgotPasswordViewModel by viewModels()
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_forgot_password, container, false)
+    override fun getLayoutResId(): Int  = R.layout.fragment_forgot_password
+
+    val mainActivityViewModel: MainActivityViewModel by activityViewModels()
+
+    override fun getMaiViewModel() = mainActivityViewModel
+
+    override fun init() {
+        binding.btnBackToLogin.setOnClickListener {
+            viewModel.navigate(ForgotPasswordFragmentDirections.actionForgotPasswordFragmentToLoginFragment())
+        }
     }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(ForgotPasswordViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
-
 }

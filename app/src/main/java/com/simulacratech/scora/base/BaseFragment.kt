@@ -11,6 +11,7 @@ import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.simulacratech.scora.BR
 import com.simulacratech.scora.extension.setUI
 
 abstract class BaseFragment<Binding : ViewDataBinding, ViewModel : BaseViewModel> : Fragment() {
@@ -50,8 +51,8 @@ abstract class BaseFragment<Binding : ViewDataBinding, ViewModel : BaseViewModel
 
     private fun doDataBinding() {
         binding.lifecycleOwner = viewLifecycleOwner // it is extra if you want to set life cycle owner in binding
-//        binding.setVariable(BR.mainViewModel, getMaiViewModel())
-//        binding.setVariable(BR.viewModel, viewModel)
+        binding.setVariable(BR.mainViewModel, getMaiViewModel())
+        binding.setVariable(BR.viewModel, viewModel)
 
         lifecycleScope.launchWhenStarted {
             viewModel.navigationEventFlow.collect {

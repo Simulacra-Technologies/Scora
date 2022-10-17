@@ -24,11 +24,11 @@ class LoginFragment : BaseFragment<FragmentLoginBinding,LoginViewModel>() {
 
     override fun init() {
         binding.btnNavigateToSignup.setOnClickListener{
-            LoginFragmentDirections.actionLoginFragmentToSignupFragment()
+            viewModel.navigate(LoginFragmentDirections.actionLoginFragmentToSignupFragment())
         }
 
         binding.btnNavigateToForgotPassword.setOnClickListener{
-            LoginFragmentDirections.actionLoginFragmentToForgotPasswordFragment()
+            viewModel.navigate(LoginFragmentDirections.actionLoginFragmentToForgotPasswordFragment())
         }
     }
 
