@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/nav_feed">
+    android:id="@+id/nav_sports_selection"
+    app:startDestination="@id/sportsSelectionFragment">
 
+    <fragment
+        android:id="@+id/sportsSelectionFragment"
+        android:name="com.simulacratech.scora.ui.sportsSelection.SportsSelectionFragment"
+        android:label="SportsSelectionFragment" />
 </navigation>

@@ -30,6 +30,12 @@ class LoginFragment : BaseFragment<FragmentLoginBinding,LoginViewModel>() {
         binding.btnNavigateToForgotPassword.setOnClickListener{
             viewModel.navigate(LoginFragmentDirections.actionLoginFragmentToForgotPasswordFragment())
         }
+        binding.btnNavigateToForgotPassword.setOnClickListener{
+            viewModel.navigate(LoginFragmentDirections.actionLoginFragmentToForgotPasswordFragment())
+        }
+        binding.btnNavigateToHomeOnSuccessfullLogin.setOnClickListener{
+            mainActivityViewModel.changeNavGraph(R.navigation.nav_feed)
+        }
     }
 
 }

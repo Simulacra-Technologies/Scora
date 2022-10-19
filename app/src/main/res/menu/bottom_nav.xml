@@ -1,4 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
-
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/nav_feed"
+        android:title="@string/menu_feed"
+        android:icon="@drawable/ic_nav_feed"
+        app:showAsAction="always"
+        />
+    <item
+        android:id="@+id/nav_sports_selection"
+        android:title="@string/menu_sports_selection"
+        android:icon="@drawable/ic_sports_selection"
+        app:showAsAction="always"
+        />
+    <item
+        android:id="@+id/nav_booking"
+        android:title="@string/menu_booking"
+        android:icon="@drawable/ic_bookings"
+        app:showAsAction="always"
+        />
+    <item
+        android:id="@+id/nav_user_rewards"
+        android:title="@string/menu_user_rewards"
+        android:icon="@drawable/ic_user_rewards"
+        app:showAsAction="always"
+        />
 </menu>

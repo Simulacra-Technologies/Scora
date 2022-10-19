@@ -3,4 +3,9 @@
     <string name="okay">Okay</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
+    <string name="menu_feed">Feed</string>
+    <string name="menu_sports_selection">Sports</string>
+    <string name="menu_booking">Bookings</string>
+    <string name="menu_user_rewards">User Rewards</string>
+
 </resources>

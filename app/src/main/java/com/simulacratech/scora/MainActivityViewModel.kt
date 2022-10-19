@@ -20,6 +20,7 @@ class MainActivityViewModel@Inject constructor(
 
     var title = MutableLiveData<String>()
 
+    var previousConfigToolbar: ConfigToolbar = ConfigToolbar()
     var currentConfigToolbar: ConfigToolbar = ConfigToolbar()
 
     private val toolbarTitleEventChannel = Channel<ConfigToolbar>()
@@ -40,9 +41,9 @@ class MainActivityViewModel@Inject constructor(
 
     var waiting: MutableLiveData<Waiting> = MutableLiveData(Waiting(false))
 
-    var bottomNavHostVisibility = MutableLiveData(View.VISIBLE)
+    var bottomNavHostVisibility = MutableLiveData(View.GONE)
 
-    var bottomNavVisibility = MutableLiveData(View.VISIBLE)
+    var bottomNavVisibility = MutableLiveData(View.GONE)
 
     var destinationLabel: CharSequence? = ""
 

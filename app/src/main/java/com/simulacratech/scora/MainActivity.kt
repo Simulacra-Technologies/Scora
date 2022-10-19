@@ -1,16 +1,16 @@
 package com.simulacratech.scora
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.simulacratech.scora.base.ConfigToolbar
 import com.simulacratech.scora.core.setupWithNavController
@@ -32,16 +32,38 @@ class MainActivity : AppCompatActivity(){
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
+        setSupportActionBar(binding.toolbar)
 
         navController = findNavController(R.id.nav_host_fragment_content_main)
 
         navController.addOnDestinationChangedListener(destinationChangedListener)
 
-        navController.setGraph(R.navigation.nav_auth)
+        lifecycleScope.launchWhenStarted {
+            viewModel.changeNavGraphEventFlow.collect {
+                when(it){
+                    R.navigation.nav_auth -> {
+                        navController.setGraph(R.navigation.nav_auth)
+                        viewModel.menuNavHostVisibility.postValue(View.VISIBLE)
+                        viewModel.bottomNavHostVisibility.postValue(View.GONE)
+                        viewModel.bottomNavVisibility.postValue(View.GONE)
+                    }
+                    else -> {
+                        navController.setGraph(it)
+                        viewModel.menuNavHostVisibility.postValue(View.GONE)
+                        viewModel.bottomNavHostVisibility.postValue(View.VISIBLE)
+                        viewModel.bottomNavVisibility.postValue(View.VISIBLE)
+                        setupBottomNavigationBar()
+                    }
+                }
+                appBarConfiguration = AppBarConfiguration(navController.graph)
+                setupActionBarWithNavController(navController, appBarConfiguration)
+            }
+        }
+
+        viewModel.changeNavGraph(R.navigation.nav_auth)
 
     }
 
@@ -102,6 +124,4 @@ class MainActivity : AppCompatActivity(){
                 }
             }*/
         }
-
-
 }
