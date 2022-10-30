@@ -5,11 +5,13 @@ import androidx.fragment.app.viewModels
 import com.simulacratech.scora.MainActivityViewModel
 import com.simulacratech.scora.R
 import com.simulacratech.scora.base.BaseFragment
-import com.simulacratech.scora.databinding.FragmentSampleBlankBinding
+import com.simulacratech.scora.base.Game
 import com.simulacratech.scora.databinding.FragmentSportsSelectionBinding
+import com.simulacratech.scora.layoutGame
 
 class SportsSelectionFragment : BaseFragment<FragmentSportsSelectionBinding, SportsSelectionViewModel>() {
 
+    var list = ArrayList<Any>()
     companion object {
         fun newInstance() = SportsSelectionFragment()
     }
@@ -23,8 +25,21 @@ class SportsSelectionFragment : BaseFragment<FragmentSportsSelectionBinding, Spo
     override fun getMaiViewModel() = mainActivityViewModel
 
     override fun init() {
+        list.add(Game("cricket"))
+        binding.recyclerView.withModels {
+            list.forEach{
+                layoutGame {
+                    id(0)
+                    game(it as Game)
+                    clickListener { model, parentView, clickedView, position ->
+                        viewModel.navigate(
+                            SportsSelectionFragmentDirections
+                                .actionSportsSelectionFragmentToStartCricketMatchFragment()
+                        )
+                    }
+                }
+            }
+        }
 
     }
-
-
 }

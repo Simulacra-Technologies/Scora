@@ -7,5 +7,52 @@
     <fragment
         android:id="@+id/sportsSelectionFragment"
         android:name="com.simulacratech.scora.ui.sportsSelection.SportsSelectionFragment"
-        android:label="SportsSelectionFragment" />
+        android:label="SportsSelectionFragment" >
+        <action
+            android:id="@+id/action_sportsSelectionFragment_to_startCricketMatchFragment"
+            app:destination="@id/startCricketMatchFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/startCricketMatchFragment"
+        android:name="com.simulacratech.scora.ui.cricket.startCricketMatch.StartCricketMatchFragment"
+        android:label="StartCricketMatchFragment" >
+        <action
+            android:id="@+id/action_startCricketMatchFragment_to_cricketMatchInfoFragment"
+            app:destination="@id/cricketMatchInfoFragment" />
+        <action
+            android:id="@+id/action_startCricketMatchFragment_to_teamSelectionFragment"
+            app:destination="@id/teamSelectionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/cricketMatchInfoFragment"
+        android:name="com.simulacratech.scora.ui.cricket.cricketMatchInfo.CricketMatchInfoFragment"
+        android:label="CricketMatchInfoFragment" >
+        <action
+            android:id="@+id/action_cricketMatchInfoFragment_to_tossFragment"
+            app:destination="@id/tossFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/tossFragment"
+        android:name="com.simulacratech.scora.ui.cricket.toss.TossFragment"
+        android:label="TossFragment" >
+        <action
+            android:id="@+id/action_tossFragment_to_startInningsFragment"
+            app:destination="@id/startInningsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/startInningsFragment"
+        android:name="com.simulacratech.scora.ui.cricket.startInnings.StartInningsFragment"
+        android:label="StartInningsFragment" >
+        <action
+            android:id="@+id/action_startInningsFragment_to_scoringFragment"
+            app:destination="@id/scoringFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/scoringFragment"
+        android:name="com.simulacratech.scora.ui.cricket.scoring.ScoringFragment"
+        android:label="ScoringFragment" />
+    <fragment
+        android:id="@+id/teamSelectionFragment"
+        android:name="com.simulacratech.scora.ui.teamSelectionFragment.TeamSelectionFragment"
+        android:label="TeamSelectionFragment" />
 </navigation>
