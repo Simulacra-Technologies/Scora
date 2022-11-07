@@ -24,10 +24,16 @@ class StartCricketMatchFragment : BaseFragment<FragmentStartCricketMatchBinding,
 
     override fun init() {
         binding.tvTeamA.setOnClickListener {
-
+            viewModel.navigate(
+                StartCricketMatchFragmentDirections
+                    .actionStartCricketMatchFragmentToTeamSelectionFragment()
+            )
         }
         binding.tvTeamB.setOnClickListener {
-
+            viewModel.navigate(
+                StartCricketMatchFragmentDirections
+                    .actionStartCricketMatchFragmentToTeamSelectionFragment()
+            )
         }
         binding.btnNavigateToMatchInfo.setOnClickListener {
             viewModel.navigate(
